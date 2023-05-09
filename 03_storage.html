@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Cloud Storage</title>
+</head>
+<body BGCOLOR="FFFFFF">
+<hr>
+<h1>Cloud Storage</h1>
+<h2>gsutil commands:</h2>
+<p>gsutil mb -l US gs://$DEVSHELL_PROJECT_ID</p>
+<p>gsutil cp gs://cloud-training/gcpfci/my-excellent-blog.png gs://$DEVSHELL_PROJECT_ID/my-excellent-blog.png</p>
+<p>gsutil acl ch -u allUsers:R gs://$DEVSHELL_PROJECT_ID/my-excellent-blog.png</p>
+<hr>
+<p> Instructions: Coursera -> Google Cloud Fundamentals: Core Infrastructure -> Week4 lab</p>
+<hr>
+<h2>Run apache2 on Debian, "sudo" if not in startup script</h2>
+<p>apt-get update</p>
+<p>apt-get install apache2 php php-mysql -y</p>
+<p>service apache2 restart</p>
+<hr>
+</body>
+</html>

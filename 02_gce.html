@@ -4,8 +4,8 @@
 </head>
 <body BGCOLOR="FFFFFF">
 <hr>
-<h1>GCE Subnets</h1>
-<p>Be default:</p>
+<h1>GCE</h1>
+<h2>By default:</h2>
 <p>Each VPC has a default network, with 37 subnets (one for each region)</p>
 <p>Each subnet has a private block, such as 10.128.0.0/20 for us-central1</p>
 <p>Each subnet has a routing table, with 37 entries + a default</p>
@@ -13,6 +13,11 @@
 <p>There is a default deny-all-ingress, and allow-all-egress rule at the end</p>
 <hr>
 <p> Instructions: Coursera -> Google Cloud Fundamentals: Core Infrastructure -> Week4 lab</p>
+<hr>
+<h2>Run apache2 on Debian, "sudo" if not in startup script</h2>
+<p>apt-get update</p>
+<p>apt-get install apache2 php php-mysql -y</p>
+<p>service apache2 restart</p>
 <hr>
 </body>
 </html>
