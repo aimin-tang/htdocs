@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>GCE</title>
+</head>
+<body BGCOLOR="FFFFFF">
+<hr>
+<h1>GCE Subnets</h1>
+<p>Be default:</p>
+<p>Each VPC has a default network, with 37 subnets (one for each region)</p>
+<p>Each subnet has a private block, such as 10.128.0.0/20 for us-central1</p>
+<p>Each subnet has a routing table, with 37 entries + a default</p>
+<p>Each VPC has a firewall to allow ingress icmp/ssh/rdp from anything, and allow all traffic from other internal subnets</p>
+<p>There is a default deny-all-ingress, and allow-all-egress rule at the end</p>
+<hr>
+</body>
+</html>
