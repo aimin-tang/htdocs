@@ -15,18 +15,18 @@ create package.json
 create index.js
 </textarea>
 <h2>Deploy locally:</h2>
-<textarea rows="5" cols="180">
+<textarea rows="5" cols="120">
 create Dockerfile
 gcloud builds submit --tag gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
 gcloud container images list
 docker run -d -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
 </textarea>
 <h2>Deploy to Cloud Run:</h2>
-<textarea rows="2" cols="180">
+<textarea rows="2" cols="120">
 gcloud run deploy --image gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld --allow-unauthenticated --region=$LOCATION
 </textarea>
 <h2>Clean up:</h2>
-<textarea rows="3" cols="180">
+<textarea rows="3" cols="120">
 gcloud container images delete gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
 gcloud run services delete helloworld --region=us-central1
 </textarea>
@@ -37,6 +37,48 @@ kubectl expose deployment nginx --port 80 --type LoadBalancer
 kubectl get pods
 kubectl get services
 kubectl scale deployment nginx --replicas 3
+</textarea>
+<hr>
+<h2>package.json:</h2>
+<textarea rows="15" cols="120">
+{
+  "name": "helloworld",
+  "description": "Simple hello world sample in Node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Google LLC",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
+</textarea>
+<hr>
+<h2>index.js:</h2>
+<textarea rows="11" cols="120">
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 8080;
+app.get('/', (req, res) => {
+  const name = process.env.NAME || 'World';
+  res.send(`Hello ${name}!`);
+});
+app.listen(port, () => {
+  console.log(`helloworld: listening on port ${port}`);
+});
+</textarea>
+<hr>
+<h2>Dockerfile:</h2>
+<textarea rows="8" cols="120">
+FROM node:12-slim
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install --only=production
+COPY . ./
+CMD [ "npm", "start" ]
 </textarea>
 <hr>
 <h2>Instructions:</h2>
