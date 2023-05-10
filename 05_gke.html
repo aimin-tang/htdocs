@@ -7,13 +7,13 @@
 <hr>
 <h1>GKE</h1>
 <h2>gcloud commands:</h2>
-<textarea rows="2" cols="80">
+<textarea rows="4" cols="80">
 gcloud services enable container.googleapis.com
 gcloud container clusters create webfrontend --zone us-east1-b --num-nodes 2
 gcloud container clusters list
 </textarea>
 <h2>kubectl commands:</h2>
-<textarea rows="2" cols="80">
+<textarea rows="6" cols="80">
 kubectl create deploy nginx --image=nginx:1.17.10
 kubectl expose deployment nginx --port 80 --type LoadBalancer
 kubectl get pods

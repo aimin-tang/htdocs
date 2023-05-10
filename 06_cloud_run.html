@@ -6,12 +6,41 @@
 <center><img src="https://storage.googleapis.com/study-386216/clouds_small.jpeg" align="bottom"> </center>
 <hr>
 <h1>Cloud Run</h1>
-<h2>gcloud commands:</h2>
-<p>gcloud services enable run.googleapis.com</p>
-<p>gcloud config set compute/region us-central1</p>
+<h2>The app:</h2>
+<textarea rows="6" cols="80">
+gcloud services enable run.googleapis.com
+gcloud config set compute/region us-central1
+mkdir helloworld && cd helloworld
+create package.json
+create index.js
+</textarea>
+<h2>Deploy locally:</h2>
+<textarea rows="5" cols="180">
+create Dockerfile
+gcloud builds submit --tag gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
+gcloud container images list
+docker run -d -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
+</textarea>
+<h2>Deploy to Cloud Run:</h2>
+<textarea rows="2" cols="180">
+gcloud run deploy --image gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld --allow-unauthenticated --region=$LOCATION
+</textarea>
+<h2>Clean up:</h2>
+<textarea rows="3" cols="180">
+gcloud container images delete gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
+gcloud run services delete helloworld --region=us-central1
+</textarea>
+<h2>kubectl commands:</h2>
+<textarea rows="6" cols="80">
+kubectl create deploy nginx --image=nginx:1.17.10
+kubectl expose deployment nginx --port 80 --type LoadBalancer
+kubectl get pods
+kubectl get services
+kubectl scale deployment nginx --replicas 3
+</textarea>
 <hr>
 <h2>Instructions:</h2>
-<p>Coursera -> Google Cloud Fundamentals: Core Infrastructure -> Week7 lab</p>
+<p>Coursera -> Google Cloud Fundamentals: Core Infrastructure -> Week6 lab</p>
 <hr>
 </body>
 </html>
