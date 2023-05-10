@@ -7,14 +7,19 @@
 <hr>
 <h1>GKE</h1>
 <h2>gcloud commands:</h2>
-<p>gcloud services enable container.googleapis.com</p>
-<p>gcloud container clusters create webfrontend --zone us-east1-b --num-nodes 2</p>
-<p>gcloud container clusters list</p>
-<p>kubectl create deploy nginx --image=nginx:1.17.10</p>
-<p>kubectl expose deployment nginx --port 80 --type LoadBalancer</p>
-<p>kubectl get pods</p>
-<p>kubectl get services</p>
-<p>kubectl scale deployment nginx --replicas 3</p>
+<textarea rows="2" cols="80">
+gcloud services enable container.googleapis.com
+gcloud container clusters create webfrontend --zone us-east1-b --num-nodes 2
+gcloud container clusters list
+</textarea>
+<h2>kubectl commands:</h2>
+<textarea rows="2" cols="80">
+kubectl create deploy nginx --image=nginx:1.17.10
+kubectl expose deployment nginx --port 80 --type LoadBalancer
+kubectl get pods
+kubectl get services
+kubectl scale deployment nginx --replicas 3
+</textarea>
 <hr>
 <h2>Instructions:</h2>
 <p>Coursera -> Google Cloud Fundamentals: Core Infrastructure -> Week6 lab</p>
