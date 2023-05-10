@@ -7,7 +7,7 @@
 <hr>
 <h1>Cloud Run</h1>
 <h2>The app:</h2>
-<textarea rows="6" cols="120">
+<textarea rows="7" cols="120">
 gcloud services enable run.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
 gcloud config set compute/region us-central1
@@ -15,7 +15,7 @@ mkdir helloworld && cd helloworld
 create package.json
 create index.js
 </textarea>
-<h2>Deploy locally:</h2>
+<h2>Deploy locally on Cloud Shell:</h2>
 <textarea rows="6" cols="120">
 create Dockerfile
 gcloud builds submit --tag gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld

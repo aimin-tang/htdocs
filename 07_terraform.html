@@ -1,0 +1,116 @@
+<html>
+<head>
+<title>Terraform</title>
+</head>
+<body BGCOLOR="FFFFFF">
+<center><img src="https://storage.googleapis.com/study-386216/clouds_small.jpeg" align="bottom"> </center>
+<hr>
+
+<h1>Terraform</h1>
+<h2>Steps:</h2>
+<textarea rows="9" cols="80">
+mkdir tfinfra
+cd tfinfra
+
+create files and folders. 
+terraform fmt
+terraform init
+terraform plan
+terraform apply
+</textarea>
+<hr>
+
+<h2>tfinfra/ should contain:</h2>
+<textarea rows="7" cols="80">
+tfinfra/
+ |- mynetwork.tf
+ |- provider.tf
+ |- instance
+     |- main.tf
+     |- variables.tf
+</textarea>
+<hr>
+
+<h2>tfinfra/provider.tf:</h2>
+<textarea rows="2" cols="80">
+provider "google" {}
+</textarea>
+<hr>
+
+<h2>tfinfra/mynetwork.tf:</h2>
+<textarea rows="36" cols="80">
+# Create the mynetwork network
+    resource "google_compute_network" "mynetwork" {
+    name = "mynetwork"
+    # RESOURCE properties go here
+    auto_create_subnetworks = "true"
+}
+# Add a firewall rule to allow HTTP, SSH, RDP and ICMP traffic on mynetwork
+resource "google_compute_firewall" "mynetwork-allow-http-ssh-rdp-icmp" {
+    name = "mynetwork-allow-http-ssh-rdp-icmp"
+    # RESOURCE properties go here
+    network = google_compute_network.mynetwork.self_link
+    allow {
+        protocol = "tcp"
+        ports    = ["22", "80", "3389"]
+        }
+    allow {
+        protocol = "icmp"
+        }
+    source_ranges = ["0.0.0.0/0"]
+}
+# Create the mynet-us-vm instance
+module "mynet-us-vm" {
+  source           = "./instance"
+  instance_name    = "mynet-us-vm"
+  instance_zone    = "us-central1-a"
+  instance_network = google_compute_network.mynetwork.self_link
+}
+# Create the mynet-eu-vm" instance
+module "mynet-eu-vm" {
+  source           = "./instance"
+  instance_name    = "mynet-eu-vm"
+  instance_zone    = "europe-west1-d"
+  instance_network = google_compute_network.mynetwork.self_link
+}
+</textarea>
+<hr>
+
+<h2>tfinfra/instance/main.tf:</h2>
+<textarea rows="17" cols="80">
+resource "google_compute_instance" "vm_instance" {
+  name         = "${var.instance_name}"
+  zone         = "${var.instance_zone}"
+  machine_type = "${var.instance_type}"
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+      }
+  }
+  network_interface {
+    network = "${var.instance_network}"
+    access_config {
+      # Allocate a one-to-one NAT IP to the instance
+    }
+  }
+}
+</textarea>
+<hr>
+
+<h2>tfinfra/instance/variables.tf:</h2>
+<textarea rows="7" cols="80">
+variable "instance_name" {}
+variable "instance_zone" {}
+variable "instance_type" {
+  default = "e2-micro"
+  }
+variable "instance_network" {}
+</textarea>
+<hr>
+
+<h2>Instructions:</h2>
+<p>Coursera -> Google Cloud Fundamentals: Core Infrastructure -> Week8 lab</p>
+<hr>
+
+</body>
+</html>
