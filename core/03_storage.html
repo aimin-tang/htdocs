@@ -5,17 +5,20 @@
 <body BGCOLOR="FFFFFF">
 <center><img src="https://storage.googleapis.com/study-386216/clouds_small.jpeg" align="bottom"> </center>
 <hr>
+
 <h1>Cloud Storage</h1>
 <h2>gsutil commands:</h2>
-<textarea rows="4" cols="180">
+<textarea rows="4" cols="120">
 gsutil mb -l US gs://$DEVSHELL_PROJECT_ID
 gsutil cp gs://cloud-training/gcpfci/my-excellent-blog.png gs://$DEVSHELL_PROJECT_ID/my-excellent-blog.png
 gsutil acl ch -u allUsers:R gs://$DEVSHELL_PROJECT_ID/my-excellent-blog.png
 </textarea>
 <hr>
+
 <h2>Instructions:</h2>
 <p>Coursera -> Google Cloud Fundamentals: Core Infrastructure -> Week5 lab</p>
 <hr>
+
 <h2>Run apache2 on Debian, "sudo" if not in startup script</h2>
 <textarea rows="4" cols="80">
 apt-get update

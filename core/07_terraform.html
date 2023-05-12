@@ -18,7 +18,6 @@ terraform init
 terraform plan
 terraform apply
 </textarea>
-<hr>
 
 <h2>tfinfra/ should contain:</h2>
 <textarea rows="7" cols="80">
@@ -29,13 +28,11 @@ tfinfra/
      |- main.tf
      |- variables.tf
 </textarea>
-<hr>
 
 <h2>tfinfra/provider.tf:</h2>
 <textarea rows="2" cols="80">
 provider "google" {}
 </textarea>
-<hr>
 
 <h2>tfinfra/mynetwork.tf:</h2>
 <textarea rows="36" cols="80">
@@ -74,7 +71,6 @@ module "mynet-eu-vm" {
   instance_network = google_compute_network.mynetwork.self_link
 }
 </textarea>
-<hr>
 
 <h2>tfinfra/instance/main.tf:</h2>
 <textarea rows="17" cols="80">
@@ -95,7 +91,6 @@ resource "google_compute_instance" "vm_instance" {
   }
 }
 </textarea>
-<hr>
 
 <h2>tfinfra/instance/variables.tf:</h2>
 <textarea rows="7" cols="80">

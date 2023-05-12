@@ -5,6 +5,7 @@
 <body BGCOLOR="FFFFFF">
 <center><img src="https://storage.googleapis.com/study-386216/clouds_small.jpeg" align="bottom"> </center>
 <hr>
+
 <h1>Cloud Run</h1>
 <h2>The app:</h2>
 <textarea rows="7" cols="120">
@@ -33,6 +34,7 @@ gcloud container images delete gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
 gcloud run services delete helloworld --region=us-central1
 </textarea>
 <hr>
+
 <h2>package.json:</h2>
 <textarea rows="15" cols="80">
 {
@@ -50,7 +52,7 @@ gcloud run services delete helloworld --region=us-central1
   }
 }
 </textarea>
-<hr>
+
 <h2>index.js:</h2>
 <textarea rows="11" cols="80">
 const express = require('express');
@@ -64,7 +66,7 @@ app.listen(port, () => {
   console.log(`helloworld: listening on port ${port}`);
 });
 </textarea>
-<hr>
+
 <h2>Dockerfile:</h2>
 <textarea rows="7" cols="80">
 FROM node:12-slim
@@ -75,6 +77,7 @@ COPY . ./
 CMD [ "npm", "start" ]
 </textarea>
 <hr>
+
 <h2>Instructions:</h2>
 <p>Coursera -> Google Cloud Fundamentals: Core Infrastructure -> Week7 lab</p>
 <hr>
